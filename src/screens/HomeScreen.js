@@ -19,4 +19,34 @@ const HomeScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [nombre, setNombre] = useState("");
 
+  useEffect(() => {
+    cargarDatos();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      cargarDatos();
+    });
+    return unsubscribe;
+  }, [navigation]);
+
+  const cargarDatos = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const nombreGuardado = await AsyncStorage.getItem("nombre");
+      setNombre(nombreGuardado || "");
+
+      const response = await fetch(`${API_URL}/publicaciones/`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      const data = await response.json();
+
+      const userId = await AsyncStorage.getItem("user_id");
+      const misPubs = data.filter((p) => p.vendedor.toString() === userId);
+      setPublicaciones(misPubs);
+    } catch (error) {
+      console.error("Error cargando publicaciones:", error);
+    } finally {
+      setLoading(false);
+    }
   
