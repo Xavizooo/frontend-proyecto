@@ -116,3 +116,13 @@ Este frontend consume la API REST del backend de Ruratec. Asegúrate de que el s
 ## 📄 Licencia
 
 Este proyecto está bajo la licencia MIT.
+
+
+Contribuyentes
+Luis Danilo Martinez Cañon
+Andres Felipe Diaz Barbosa
+Hector Ivan Amado Betancur
+Javier Andres Torres Sanchez
+Juan David Ducuara Santa
+
+RURATEC
