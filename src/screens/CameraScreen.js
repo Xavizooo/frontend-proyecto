@@ -195,3 +195,73 @@ const CameraScreen = ({ navigation }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#000" },
+  overlay: {
+    position: "absolute",
+    bottom: 40,
+    width: "100%",
+    alignItems: "center",
+  },
+  captureBtn: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerBtn: {
+    width: 55,
+    height: 55,
+    borderRadius: 27.5,
+    borderWidth: 2,
+    borderColor: "#000",
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.7)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    width: "90%",
+    maxHeight: "80%",
+    padding: 20,
+    borderRadius: 15,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 15,
+    color: "#1B3A1B",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ddd",
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 12,
+    fontSize: 15,
+  },
+  modalBtn: {
+    backgroundColor: "#709742",
+    padding: 14,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 5,
+  },
+  modalBtnText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  cancelBtn: { padding: 12, alignItems: "center", marginTop: 8 },
+  cancelText: { color: "#999", fontSize: 14 },
+  btnAction: {
+    backgroundColor: "#709742",
+    padding: 15,
+    borderRadius: 10,
+    margin: 20,
+  },
+});
+
+export default CameraScreen;
