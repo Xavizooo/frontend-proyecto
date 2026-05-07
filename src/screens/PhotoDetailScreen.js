@@ -167,3 +167,67 @@ const PhotoDetailScreen = ({ route, navigation }) => {
     </SafeAreaView>
   );
 };
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: "#FFF" },
+    headerImage: { width: "100%", height: 250 },
+    formContainer: {
+      padding: 20,
+      backgroundColor: "#FFF",
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
+      marginTop: -30,
+    },
+    sectionTitle: {
+      fontSize: 22,
+      fontWeight: "bold",
+      color: "#1B3A1B",
+      marginBottom: 20,
+    },
+    inputGroup: { marginBottom: 15 },
+    label: {
+      fontSize: 14,
+      fontWeight: "600",
+      color: "#666",
+      marginBottom: 8,
+      marginLeft: 4,
+    },
+    inputWrapper: {
+      flexDirection: "row",
+      alignItems: "center",
+      backgroundColor: "#F8F9FA",
+      borderRadius: 12,
+      paddingHorizontal: 12,
+      borderWidth: 1,
+      borderColor: "#EEE",
+    },
+    input: {
+      flex: 1,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      fontSize: 16,
+      color: "#333",
+    },
+    textArea: {
+      backgroundColor: "#F8F9FA",
+      borderRadius: 12,
+      padding: 12,
+      textAlignVertical: "top",
+      borderWidth: 1,
+      borderColor: "#EEE",
+    },
+    row: { flexDirection: "row" },
+    saveButton: {
+      backgroundColor: "#709742",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      paddingVertical: 15,
+      borderRadius: 15,
+      marginTop: 20,
+      gap: 10,
+      elevation: 4,
+    },
+    saveButtonText: { color: "#FFF", fontSize: 18, fontWeight: "bold" },
+  });
+  
+  export default PhotoDetailScreen;
