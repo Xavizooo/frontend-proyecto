@@ -1,74 +1,118 @@
-📑 Guía de Configuración y Ejecución del Proyecto
-Este documento contiene los pasos detallados para replicar el entorno de desarrollo y ejecutar la aplicación de bitácora técnica.
+# 🌱 Ruratec — Frontend
 
-🚀 Requisitos Previos
-Antes de comenzar, asegúrate de tener instalado:
+Interfaz web de **Ruratec**, una plataforma que conecta agricultores con comerciantes. Los agricultores publican sus productos y los comerciantes los contactan directamente por WhatsApp para negociar. Los pagos se procesan dentro de la app con una comisión del 4%.
 
-Node.js (Versión LTS recomendada).
+---
 
-Git (Para clonar el repositorio).
+## 🚀 Tecnologías
 
-Expo Go (En tu celular físico) o un emulador de Android configurado.
+- [React](https://react.dev/) — Librería principal de UI
+- React Router — Navegación entre vistas
+- Axios — Consumo de la API REST del backend
+- CSS Modules / Tailwind (según configuración del proyecto)
 
-🛠️ Paso 1: Instalación de Dependencias Base
-Una vez clonado el proyecto, abre una terminal en la carpeta raíz y ejecuta:
+---
 
-Bash
-# Instalar el CLI de Expo de forma global (opcional pero recomendado)
-npm install -g expo-cli
+## 📋 Requisitos previos
 
-# Instalar todas las dependencias del package.json
+- Node.js `>= 18.x`
+- npm o yarn
+- Backend de Ruratec corriendo localmente (ver [README del backend](../Backend/README.md))
+
+---
+
+## ⚙️ Instalación
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Xavizooo/frontend-proyecto.git
+cd frontend-proyecto
+
+# 2. Instalar dependencias
 npm install
-📦 Paso 2: Instalación de Dependencias Específicas
-Si estás iniciando el proyecto desde cero en otra carpeta, debes instalar estas librerías en el siguiente orden para evitar conflictos de versiones:
 
-1. Navegación (React Navigation)
-Es el núcleo de la navegación entre pantallas.
+# 3. Configurar variables de entorno
+cp .env.example .env
+# Editar .env con la URL del backend
+```
 
-Bash
-npm install @react-navigation/native @react-navigation/stack
-npx expo install react-native-screens react-native-safe-area-context
-2. Iconografía (Lucide React Native)
-Para los iconos de MapPin, Save, Lock, etc.
+### Variables de entorno
 
-Bash
-npm install lucide-react-native
-3. Autenticación Biométrica (Expo Local Authentication)
-Para la seguridad con huella o rostro en el Home.
+Crea un archivo `.env` en la raíz del proyecto:
 
-Bash
-npx expo install expo-local-authentication
-4. Cámara y Ubicación
-Componentes esenciales para capturar la evidencia técnica.
+```env
+REACT_APP_API_URL=http://localhost:8000/api
+REACT_APP_WHATSAPP_BASE_URL=https://wa.me/
+```
 
-Bash
-npx expo install expo-camera expo-location
-🏃 Paso 3: Ejecución del Proyecto
-Una vez instaladas todas las dependencias, inicia el servidor de desarrollo:
+---
 
-Bash
-npx expo start
-Opciones de visualización:
-Android: Presiona a en la terminal (requiere Android Studio y emulador abierto).
+## ▶️ Ejecución
 
-iOS: Presiona i en la terminal (solo en macOS con Xcode).
+```bash
+# Modo desarrollo
+npm start
 
-Celular Físico: Escanea el código QR que aparece en la terminal usando la app Expo Go.
+# Build para producción
+npm run build
+```
 
-⚠️ Solución de Problemas Comunes
-Error: "Module not found": Ejecuta npm install nuevamente.
+La app estará disponible en `http://localhost:3000`.
 
-Error de SDK en Expo Go: Asegúrate de que tu app Expo Go esté actualizada en la Play Store/App Store.
+---
 
-Caché corrupto: Si los cambios no se ven reflejados, limpia la caché con:
+## 🗂️ Estructura del proyecto
 
-Bash
-npx expo start -c
-📂 Estructura del Proyecto
-HomeScreen.js: Lista de bitácoras y acceso biométrico.
+```
+src/
+├── assets/          # Imágenes, íconos y recursos estáticos
+├── components/      # Componentes reutilizables (botones, cards, modals)
+├── pages/           # Vistas principales de la aplicación
+│   ├── Home/
+│   ├── Login/
+│   ├── Register/
+│   ├── Products/    # Listado y detalle de productos
+│   └── Dashboard/   # Panel del agricultor
+├── services/        # Llamadas a la API (axios)
+├── context/         # Estado global (auth, usuario)
+├── routes/          # Configuración de rutas
+└── App.jsx
+```
 
-PhotoDetailScreen.js: Visualización de coordenadas y edición de reporte técnico.
+---
 
-CameraScreen.js: Captura de fotos y obtención de coordenadas GPS.
+## ✨ Funcionalidades principales
 
-Nota Técnica: Este proyecto utiliza npx expo install en lugar de npm install para las librerías de Expo, ya que esto garantiza que se instale la versión exacta compatible con tu versión de Expo SDK.
+| Funcionalidad | Descripción |
+|---|---|
+| 🧑‍🌾 Registro de agricultores | Crear cuenta y gestionar perfil |
+| 🛒 Publicación de productos | Subir productos con nombre, precio, cantidad, fotos y descripción |
+| 🔍 Explorar productos | Los comerciantes navegan el catálogo de productos disponibles |
+| 📲 Contacto por WhatsApp | Botón directo para iniciar negociación con el agricultor |
+| 💳 Pago en app | Procesamiento del pago con comisión del 4% aplicada automáticamente |
+| 🔐 Autenticación | Login y registro con JWT |
+
+---
+
+## 🔗 Conexión con el Backend
+
+Este frontend consume la API REST del backend de Ruratec. Asegúrate de que el servidor esté activo antes de correr la app.
+
+- Repositorio del backend: [https://github.com/Xavizooo/Backend](https://github.com/Xavizooo/Backend)
+- URL base por defecto: `http://localhost:8000/api`
+
+---
+
+## 🤝 Contribuciones
+
+1. Haz fork del repositorio
+2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
+3. Haz commit de tus cambios: `git commit -m 'feat: descripción del cambio'`
+4. Push a tu rama: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT.
