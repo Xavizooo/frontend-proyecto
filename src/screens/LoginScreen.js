@@ -140,3 +140,42 @@ const LoginScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: "#FFF" },
+    content: {
+      flex: 1,
+      padding: 30,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    logo: { width: 180, height: 80, marginBottom: 30 },
+    title: { fontSize: 22, fontWeight: "bold", color: "#333", marginBottom: 30 },
+    inputBox: {
+      flexDirection: "row",
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: "#709742",
+      borderRadius: 12,
+      paddingHorizontal: 15,
+      marginBottom: 20,
+      width: "100%",
+      height: 55,
+    },
+    input: { flex: 1, marginLeft: 10, color: "#333" },
+    btn: {
+      backgroundColor: "#709742",
+      width: "100%",
+      height: 55,
+      borderRadius: 12,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 10,
+      elevation: 3,
+    },
+    btnText: { color: "#FFF", fontWeight: "bold", fontSize: 16 },
+    registerLink: { marginTop: 25 },
+    registerText: { color: "#666", fontSize: 14 },
+    bold: { color: "#709742", fontWeight: "bold" },
+  });
+  
+  export default LoginScreen;
