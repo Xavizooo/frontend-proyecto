@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Rurateck",
+    "slug": "Rurateck",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tuusuario.Rurateck"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.tuusuario.Rurateck"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        { "cameraPermission": "Permite usar la cámara para capturar evidencias visuales." }
+      ],
+      [
+        "expo-location",
+        { "locationAlwaysAndWhenInUsePermission": "Permite registrar las coordenadas GPS de cada bitácora." }
+      ],
+      [
+        "expo-local-authentication",
+        { "faceIDPermission": "Permite proteger el acceso a tus archivos mediante Face ID." }
+      ]
+    ]
+  }
+}
