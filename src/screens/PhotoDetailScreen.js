@@ -47,3 +47,44 @@ const PhotoDetailScreen = ({ route, navigation }) => {
     };
     navigation.navigate("HomeAgricultor", { updatedLog });
   };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
+        <ScrollView>
+          <Image source={{ uri: photo.uri }} style={styles.headerImage} />
+
+          <View style={styles.formContainer}>
+            <Text style={styles.sectionTitle}>Detalles de la Publicación</Text>
+
+            {/* Campo: Producto */}
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Nombre del Producto</Text>
+              <View style={styles.inputWrapper}>
+                <Tag size={20} color="#709742" />
+                <TextInput
+                  style={styles.input}
+                  value={title}
+                  onChangeText={setTitle}
+                  placeholder="Ej: Papa Sabanera"
+                />
+              </View>
+            </View>
+
+            {/* Campo: Teléfono */}
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Teléfono de Contacto (WhatsApp)</Text>
+              <View style={styles.inputWrapper}>
+                <Phone size={20} color="#709742" />
+                <TextInput
+                  style={styles.input}
+                  value={farmerPhone}
+                  onChangeText={setFarmerPhone}
+                  placeholder="Ej: 3101234567"
+                  keyboardType="phone-pad"
+                />
+              </View>
+            </View>
