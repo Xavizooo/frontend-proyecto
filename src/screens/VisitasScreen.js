@@ -101,3 +101,38 @@ export const styles = StyleSheet.create({
   emptyContainer: { alignItems: "center", marginTop: 50 },
   emptyText: { color: "#999", fontSize: 15 },
 });
+
+import React from "react";
+import { SafeAreaView, Text, FlatList, ActivityIndicator, View } from "react-native";
+import VisitaCard from "../components/VisitaCard";
+import { useVisitas } from "../hooks/useVisitas";
+import { styles } from "../styles/visitasStyles";
+
+const VisitasScreen = ({ route }) => {
+  const { publicacion } = route.params;
+  const { visitas, loading } = useVisitas(publicacion.id);
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.titulo}>Interesados en {publicacion.producto}</Text>
+
+      {loading ? (
+        <ActivityIndicator size="large" color="#709742" style={{ marginTop: 20 }} />
+      ) : (
+        <FlatList
+          data={visitas}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <VisitaCard item={item} />}
+          contentContainerStyle={styles.list}
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyText}>Nadie ha visto esta publicación aún</Text>
+            </View>
+          }
+        />
+      )}
+    </SafeAreaView>
+  );
+};
+
+export default VisitasScreen;
