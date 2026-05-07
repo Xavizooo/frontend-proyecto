@@ -97,3 +97,30 @@ const DetallePublicacionComerciante = ({ route, navigation }) => {
               <Text style={styles.priceUnit}>/ {item.unidad}</Text>
             </View>
           </View>
+
+          <View style={styles.detailsGrid}>
+            <View style={styles.detailItem}>
+              <Box size={20} color="#709742" />
+              <View>
+                <Text style={styles.detailLabel}>Unidad</Text>
+                <Text style={styles.detailValue}>{item.unidad}</Text>
+              </View>
+            </View>
+
+            <View style={styles.detailItem}>
+              <MapPin size={20} color="#709742" />
+              <View>
+                <Text style={styles.detailLabel}>Origen</Text>
+                <Text style={styles.detailValue}>{item.ubicacion}</Text>
+              </View>
+            </View>
+
+            <View style={styles.detailItem}>
+              <Calendar size={20} color="#709742" />
+              <View>
+                <Text style={styles.detailLabel}>Publicado</Text>
+                <Text style={styles.detailValue}>
+                  {new Date(item.creado_en).toLocaleDateString("es-CO")}
+                </Text>
+              </View>
+            </View>
