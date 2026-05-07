@@ -45,3 +45,55 @@ const DetallePublicacionComerciante = ({ route, navigation }) => {
       console.error("Error registrando visita:", error);
     }
   };
+
+  const handleContactar = () => {
+    const mensaje = `Hola, estoy interesado en tu publicación de ${item.producto} en RURATEC.`;
+    const telefono = item.vendedor_telefono
+      ? item.vendedor_telefono
+      : "573000000000";
+    Linking.openURL(
+      `whatsapp://send?text=${encodeURIComponent(mensaje)}&phone=${telefono}`,
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView bounces={false}>
+        <View style={styles.imageContainer}>
+          {item.imagen ? (
+            <Image source={{ uri: item.imagen }} style={styles.mainImage} />
+          ) : (
+            <View
+              style={[
+                styles.mainImage,
+                {
+                  backgroundColor: "#e0e0e0",
+                  justifyContent: "center",
+                  alignItems: "center",
+                },
+              ]}
+            >
+              <Text style={{ color: "#999", fontSize: 16 }}>Sin imagen</Text>
+            </View>
+          )}
+          <TouchableOpacity
+            style={styles.backBtn}
+            onPress={() => navigation.goBack()}
+          >
+            <ChevronLeft size={28} color="#fff" />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.infoContent}>
+          <View style={styles.headerSection}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.productTitle}>{item.producto}</Text>
+              <Text style={styles.farmerSub}>
+                Publicado por: {item.vendedor_nombre || "Productor Ruratec"}
+              </Text>
+            </View>
+            <View style={styles.priceBadge}>
+              <Text style={styles.priceValue}>${item.precio}</Text>
+              <Text style={styles.priceUnit}>/ {item.unidad}</Text>
+            </View>
+          </View>
