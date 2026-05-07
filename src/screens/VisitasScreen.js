@@ -51,3 +51,53 @@ const styles = StyleSheet.create({
 
 export default VisitaCard;
 
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API_URL } from "../config";
+
+export const useVisitas = (publicacionId) => {
+  const [visitas, setVisitas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const cargarVisitas = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const response = await fetch(
+        `${API_URL}/publicaciones/${publicacionId}/visitas/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      const data = await response.json();
+      setVisitas(data);
+    } catch (error) {
+      console.error("Error cargando visitas:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    cargarVisitas();
+  }, [publicacionId]);
+
+  return { visitas, loading, recargar: cargarVisitas };
+};
+
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#F8F9FA" },
+  titulo: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#1B3A1B",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    backgroundColor: "#fff",
+  },
+  list: { padding: 15 },
+  emptyContainer: { alignItems: "center", marginTop: 50 },
+  emptyText: { color: "#999", fontSize: 15 },
+});
