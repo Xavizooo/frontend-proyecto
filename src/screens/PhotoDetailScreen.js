@@ -88,3 +88,82 @@ const PhotoDetailScreen = ({ route, navigation }) => {
                 />
               </View>
             </View>
+            <View style={styles.row}>
+              <View style={[styles.inputGroup, { flex: 1 }]}>
+                <Text style={styles.label}>Cantidad</Text>
+                <View style={styles.inputWrapper}>
+                  <Box size={20} color="#709742" />
+                  <TextInput
+                    style={styles.input}
+                    value={quantity}
+                    onChangeText={setQuantity}
+                    placeholder="Ej: 500kg"
+                  />
+                </View>
+              </View>
+
+              <View style={[styles.inputGroup, { flex: 1, marginLeft: 10 }]}>
+                <Text style={styles.label}>Precio / lb</Text>
+                <View style={styles.inputWrapper}>
+                  <DollarSign size={20} color="#709742" />
+                  <TextInput
+                    style={styles.input}
+                    value={price}
+                    onChangeText={setPrice}
+                    placeholder="Ej: 2800"
+                    keyboardType="numeric"
+                  />
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Ubicación de Cosecha</Text>
+              <View style={styles.inputWrapper}>
+                <MapPin size={20} color="#709742" />
+                <TextInput
+                  style={styles.input}
+                  value={location}
+                  onChangeText={setLocation}
+                  placeholder="Ej: Mosquera, Cundinamarca"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Variedad / Calibre</Text>
+              <View style={styles.inputWrapper}>
+                <Info size={20} color="#709742" />
+                <TextInput
+                  style={styles.input}
+                  value={variety}
+                  onChangeText={setVariety}
+                  placeholder="Ej: Gruesa / Primera"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Notas adicionales</Text>
+              <TextInput
+                style={[styles.input, styles.textArea]}
+                value={description}
+                onChangeText={setDescription}
+                placeholder="Detalles sobre logística..."
+                multiline
+                numberOfLines={4}
+              />
+            </View>
+
+            <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+              <Save size={24} color="#FFF" />
+              <Text style={styles.saveButtonText}>Publicar Producto</Text>
+            </TouchableOpacity>
+            
+            <View style={{ height: 40 }} />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+};
