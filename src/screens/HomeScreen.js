@@ -124,3 +124,70 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#FFFFFF" },
+  header: {
+    height: 110,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#f0f0f0",
+  },
+  logoImage: { width: 180, height: 60 },
+  saludo: { fontSize: 14, color: "#709742", fontWeight: "600", marginTop: 5 },
+  emptyContainer: { alignItems: "center", marginTop: 50 },
+  emptyText: { color: "#999", fontSize: 16 },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 15,
+    marginBottom: 20,
+    elevation: 4,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
+    marginHorizontal: 15,
+  },
+  cardImage: { width: "100%", height: 180 },
+  noImage: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
+  cardContent: { padding: 15 },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: 5,
+  },
+  infoRow: { flexDirection: "row", alignItems: "center", marginBottom: 12 },
+  infoText: {
+    fontSize: 14,
+    color: "#709742",
+    marginLeft: 5,
+    fontWeight: "600",
+  },
+  statsRow: {
+    flexDirection: "row",
+    gap: 25,
+    borderTopWidth: 1,
+    borderTopColor: "#f5f5f5",
+    paddingTop: 12,
+  },
+  stat: { flexDirection: "row", alignItems: "center", gap: 6 },
+  statText: { fontSize: 15, color: "#444", fontWeight: "bold" },
+  fab: {
+    position: "absolute",
+    right: 25,
+    bottom: 30,
+    backgroundColor: "#709742",
+    width: 65,
+    height: 65,
+    borderRadius: 32.5,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 8,
+  },
+});
+
+export default HomeScreen;
