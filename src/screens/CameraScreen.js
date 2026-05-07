@@ -122,3 +122,76 @@ const CameraScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+
+  return (
+    <View style={styles.container}>
+      <CameraView style={StyleSheet.absoluteFillObject} ref={cameraRef} />
+      <View style={styles.overlay}>
+        <TouchableOpacity style={styles.captureBtn} onPress={takePicture}>
+          <View style={styles.innerBtn} />
+        </TouchableOpacity>
+      </View>
+
+      <Modal visible={showModal} transparent animationType="slide">
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Detalles del producto</Text>
+            <ScrollView>
+              <TextInput
+                style={styles.input}
+                placeholder="Nombre del producto *"
+                value={form.producto}
+                onChangeText={(v) => setForm({ ...form, producto: v })}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Descripción"
+                value={form.descripcion}
+                onChangeText={(v) => setForm({ ...form, descripcion: v })}
+                multiline
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Precio *"
+                value={form.precio}
+                onChangeText={(v) => setForm({ ...form, precio: v })}
+                keyboardType="numeric"
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Unidad (kg, lb, tonelada...) *"
+                value={form.unidad}
+                onChangeText={(v) => setForm({ ...form, unidad: v })}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Ubicación *"
+                value={form.ubicacion}
+                onChangeText={(v) => setForm({ ...form, ubicacion: v })}
+              />
+
+              <TouchableOpacity
+                style={[styles.modalBtn, loading && { opacity: 0.7 }]}
+                onPress={publicar}
+                disabled={loading}
+              >
+                {loading ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text style={styles.modalBtnText}>Publicar</Text>
+                )}
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.cancelBtn}
+                onPress={() => setShowModal(false)}
+              >
+                <Text style={styles.cancelText}>Cancelar</Text>
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
