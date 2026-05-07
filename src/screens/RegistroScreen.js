@@ -72,3 +72,32 @@ export const useRegistro = (navigation) => {
 
   return { form, setForm, loading, handleRegister };
 };
+
+import React from "react";
+import { View, Modal, FlatList, TouchableOpacity, Text, StyleSheet } from "react-native";
+
+const SelectorModal = ({ visible, type, data, onSelect }) => (
+  <Modal visible={visible} transparent animationType="fade">
+    <View style={styles.modal}>
+      <View style={styles.modalContent}>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => onSelect(item)} style={styles.opt}>
+              <Text>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
+    </View>
+  </Modal>
+);
+
+const styles = StyleSheet.create({
+  modal: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "center", alignItems: "center" },
+  modalContent: { backgroundColor: "#FFF", width: "80%", maxHeight: "60%", borderRadius: 10, padding: 20 },
+  opt: { padding: 15, borderBottomWidth: 1, borderColor: "#EEE" },
+});
+
+export default SelectorModal;
