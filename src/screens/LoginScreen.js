@@ -77,3 +77,66 @@ const LoginScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+  return (
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.content}
+      >
+        <Image
+          source={require("../../imagenes/logo.jpeg")}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+
+        <Text style={styles.title}>Iniciar Sesión</Text>
+
+        <View style={styles.inputBox}>
+          <Mail size={20} color="#709742" />
+          <TextInput
+            style={styles.input}
+            placeholder="Correo electrónico"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        <View style={styles.inputBox}>
+          <Lock size={20} color="#709742" />
+          <TextInput
+            style={styles.input}
+            placeholder="Contraseña"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        <TouchableOpacity
+          style={[styles.btn, loading && { opacity: 0.8 }]}
+          onPress={handleLogin}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator color="#FFF" />
+          ) : (
+            <Text style={styles.btnText}>ENTRAR</Text>
+          )}
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.registerLink}
+          onPress={() => navigation.navigate("Registro")}
+        >
+          <Text style={styles.registerText}>
+            ¿No tienes cuenta? <Text style={styles.bold}>Regístrate aquí</Text>
+          </Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+};
