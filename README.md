@@ -1,128 +1,108 @@
-# 🌱 Ruratec — Frontend
+Aquí tienes la información de tu archivo README organizada bajo la estructura que solicitaste para el proyecto **RURATEC**:
 
-Interfaz web de **Ruratec**, una plataforma que conecta agricultores con comerciantes. Los agricultores publican sus productos y los comerciantes los contactan directamente por WhatsApp para negociar. Los pagos se procesan dentro de la app con una comisión del 4%.
+# 🌱 RURATEC — Frontend
 
----
+## Descripción
 
-## 🚀 Tecnologías
+Ruratec es una plataforma diseñada para eliminar intermediarios innecesarios en la cadena de suministro agrícola, conectando directamente a **agricultores con comerciantes**. Permite que los agricultores publiquen sus productos y que los comerciantes los contacten vía WhatsApp para negociar, integrando además un sistema de pagos seguro dentro de la aplicación que gestiona automáticamente una comisión del 4%.
 
-- [React](https://react.dev/) — Librería principal de UI
-- React Router — Navegación entre vistas
-- Axios — Consumo de la API REST del backend
-- CSS Modules / Tailwind (según configuración del proyecto)
+## Integrantes
 
----
+* Luis Danilo Martinez Cañon
+* Andres Felipe Diaz Barbosa
+* Hector Ivan Amado Betancur
+* Javier Andres Torres Sanchez
+* Juan David Ducuara Santa
 
-## 📋 Requisitos previos
+## Tecnologías utilizadas
 
-- Node.js `>= 18.x`
-- npm o yarn
-- Backend de Ruratec corriendo localmente (ver [README del backend](../Backend/README.md))
+* **Lenguaje:** JavaScript (ES6+)
+* **Framework:** React
+* **Base de datos:** PostgreSQL (Gestionada desde el Backend)
+* **Librerías principales:**
+* **React Router:** Para la navegación entre vistas.
+* **Axios:** Para el consumo de la API REST.
+* **Tailwind CSS / CSS Modules:** Para el diseño de la interfaz.
 
----
 
-## ⚙️ Instalación
 
+## Requisitos previos
+
+Para ejecutar este frontend, es necesario contar con:
+
+* **Node.js** (Versión 18.x o superior)
+* **npm** o **yarn**
+* El **Backend de Ruratec** configurado y en ejecución local.
+
+## Instalación
+
+Sigue estos pasos para preparar el entorno:
+
+1. **Clonar el repositorio:**
 ```bash
-# 1. Clonar el repositorio
 git clone https://github.com/Xavizooo/frontend-proyecto.git
 cd frontend-proyecto
 
-# 2. Instalar dependencias
+```
+
+
+2. **Instalar dependencias:**
+```bash
 npm install
 
-# 3. Configurar variables de entorno
-cp .env.example .env
-# Editar .env con la URL del backend
 ```
 
-### Variables de entorno
 
-Crea un archivo `.env` en la raíz del proyecto:
 
-```env
-REACT_APP_API_URL=http://localhost:8000/api
-REACT_APP_WHATSAPP_BASE_URL=https://wa.me/
-```
+## Ejecución local
 
----
-
-## ▶️ Ejecución
+Para iniciar el servidor de desarrollo:
 
 ```bash
-# Modo desarrollo
 npm start
 
-# Build para producción
+```
+
+La aplicación estará disponible por defecto en: `http://localhost:3000`.
+
+## Base de datos
+
+La gestión de la base de datos se realiza a través del **Backend**. Asegúrate de haber seguido las instrucciones del [repositorio del Backend](https://github.com/Xavizooo/Backend) para realizar las migraciones en **PostgreSQL** y tener el servicio activo en el puerto `8000`.
+
+## Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto con los siguientes parámetros:
+
+* `REACT_APP_API_URL`: URL base de la API (ej. `http://localhost:8000/api`).
+* `REACT_APP_WHATSAPP_BASE_URL`: URL base para redirección a chat (ej. `[https://wa.me/](https://wa.me/)`).
+
+## Usuario de prueba
+
+*Por el momento, el acceso se realiza mediante el flujo de registro e inicio de sesión con JWT implementado en la plataforma.*
+
+* **Login:** `/login`
+* **Registro:** `/register`
+
+## Despliegue
+
+El proyecto está preparado para generar un build de producción mediante el comando:
+
+```bash
 npm run build
-```
-
-La app estará disponible en `http://localhost:3000`.
-
----
-
-## 🗂️ Estructura del proyecto
 
 ```
-src/
-├── assets/          # Imágenes, íconos y recursos estáticos
-├── components/      # Componentes reutilizables (botones, cards, modals)
-├── pages/           # Vistas principales de la aplicación
-│   ├── Home/
-│   ├── Login/
-│   ├── Register/
-│   ├── Products/    # Listado y detalle de productos
-│   └── Dashboard/   # Panel del agricultor
-├── services/        # Llamadas a la API (axios)
-├── context/         # Estado global (auth, usuario)
-├── routes/          # Configuración de rutas
-└── App.jsx
+
+GitHub
+
+## Evidencias
+
+El sistema cuenta con las siguientes vistas principales funcionando:
+
+* **Home:** Landing page del proyecto.
+* **Products:** Catálogo donde los comerciantes exploran ofertas.
+* **Dashboard:** Panel de control para que el agricultor gestione sus publicaciones.
+* **Pago:** Interfaz de procesamiento de pagos con el 4% de comisión.
+
 ```
 
----
-
-## ✨ Funcionalidades principales
-
-| Funcionalidad | Descripción |
-|---|---|
-| 🧑‍🌾 Registro de agricultores | Crear cuenta y gestionar perfil |
-| 🛒 Publicación de productos | Subir productos con nombre, precio, cantidad, fotos y descripción |
-| 🔍 Explorar productos | Los comerciantes navegan el catálogo de productos disponibles |
-| 📲 Contacto por WhatsApp | Botón directo para iniciar negociación con el agricultor |
-| 💳 Pago en app | Procesamiento del pago con comisión del 4% aplicada automáticamente |
-| 🔐 Autenticación | Login y registro con JWT |
-
----
-
-## 🔗 Conexión con el Backend
-
-Este frontend consume la API REST del backend de Ruratec. Asegúrate de que el servidor esté activo antes de correr la app.
-
-- Repositorio del backend: [https://github.com/Xavizooo/Backend](https://github.com/Xavizooo/Backend)
-- URL base por defecto: `http://localhost:8000/api`
-
----
-
-## 🤝 Contribuciones
-
-1. Haz fork del repositorio
-2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
-3. Haz commit de tus cambios: `git commit -m 'feat: descripción del cambio'`
-4. Push a tu rama: `git push origin feature/nueva-funcionalidad`
-5. Abre un Pull Request
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT.
-
-
-Contribuyentes
-Luis Danilo Martinez Cañon
-Andres Felipe Diaz Barbosa
-Hector Ivan Amado Betancur
-Javier Andres Torres Sanchez
-Juan David Ducuara Santa
-
-RURATEC
+```
